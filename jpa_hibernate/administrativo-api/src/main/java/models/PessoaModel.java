@@ -6,8 +6,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import entities.Pessoa;
+import entities.Produto;
 
 public class PessoaModel {
 
@@ -31,22 +33,88 @@ public class PessoaModel {
     }
 
     public void update(Pessoa p) {
-        // TODO
+           EntityManagerFactory emf = Persistence.createEntityManagerFactory("admin-jpa");
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            System.out.println("Iniciando a transação");
+            
+            Pessoa pso = em.find(Pessoa.class, p.getId());
+            pso.setNome(p.getNome());
+            pso.setCpf(p.getCpf());
+            pso.setData_nascimento(p.getData_nascimento());
+            pso.setEmail(p.getEmail());
+            pso.setIdade(p.getIdade());
+            em.getTransaction().begin();
+            em.merge(pso);
+            em.getTransaction().commit();
+            System.out.println("Pessoa alterada com sucesso !!!");
+        } catch (Exception e) {
+            em.close();
+            System.err.println("Erro ao alterar a Pessoa !!!" + e.getMessage());
+        } finally {
+            em.close();
+            System.out.println("Finalizando a transação");
+        }
     }
 
     public void delete(Pessoa p) {
-        // TODO
-    }
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("admin-jpa");
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            System.out.println("Iniciando a transação");
+            
+            Pessoa pso = em.find(Pessoa.class, p.getId());
+            em.getTransaction().begin();
+            em.remove(pso);
+            em.getTransaction().commit();
+            System.out.println("Pessoa exclída com sucesso !!!");
+        } catch (Exception e) {
+            em.close();
+            System.err.println("Erro ao excluir a Pessoa !!!" + e.getMessage());
+        } finally {
+            em.close();
+            System.out.println("Finalizando a transação");
+        }    }
 
     public Pessoa findById(Pessoa p) {
-        // TODO
-        return null;
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("admin-jpa");
+        EntityManager em = emf.createEntityManager();
+        Pessoa pso = new Pessoa();
+        try {
+            System.out.println("Iniciando a transação");
+            pso = em.find(Pessoa.class, p.getId());
+            
+           
+        } catch (Exception e) {
+            em.close();
+            System.err.println("Erro ao alterar a Pessoa !!!" + e.getMessage());
+        } finally {
+            em.close();
+            System.out.println("Finalizando a transação");
+        }
+        return pso;
     }
 
     public List<Pessoa> findAll() {
 
-        List<Pessoa> Pessoas = new ArrayList<Pessoa>();
-        // TODO
-        return null;
+        List<Pessoa> pessoas = new ArrayList<Pessoa>();
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("admin-jpa");
+        EntityManager em = emf.createEntityManager();
+        try {
+            System.out.println("Iniciando a transação");
+            pessoas = (List<Pessoa>) em.createNativeQuery(null, Pessoa.class);
+            
+           
+        } catch (Exception e) {
+            em.close();
+            System.err.println("Erro ao alterar o produto !!!" + e.getMessage());
+        } finally {
+            em.close();
+            System.out.println("Finalizando a transação");
+        }
+        return pessoas;
+
     }
 }

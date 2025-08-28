@@ -3,10 +3,12 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.management.Query;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import entities.Pessoa;
 import entities.Produto;
 
 public class ProdutoModel {
@@ -41,7 +43,7 @@ public class ProdutoModel {
             prd.setNome(p.getNome());
             prd.setPreco(p.getPreco());
             prd.setQuantidade(p.getQuantidade());
-            prd.setStatus(p.getStatus());
+            prd.setStatus(p.isStatus());
             em.getTransaction().begin();
             em.merge(prd);
             em.getTransaction().commit();
@@ -100,27 +102,27 @@ public class ProdutoModel {
         List<Produto> produtos = new ArrayList<Produto>();
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("admin-jpa");
         EntityManager em = emf.createEntityManager();
-        Produto prd = new Produto();
         try {
-            System.out.println("Iniciando a transação");
-            prd = em.find(Produto.class);
-            prd = em.
+
+            javax.persistence.Query query = em.createQuery("FROM PRODUTO");
+            produtos = query.getResultList();
+            //System.out.println("Iniciando a transação");
+            //produtos = (List<Produto>) em.createNativeQuery(null, Produto.class);
+
             
            
         } catch (Exception e) {
             em.close();
-            System.err.println("Erro ao alterar o produto !!!" + e.getMessage());
+            System.err.println("Erro ao listar o produto !!!" + e.getMessage());
         } finally {
             em.close();
             System.out.println("Finalizando a transação");
         }
-        return prd;
+        return produtos;
 
 
 
 
         
-        // TODO
-        return null;
-    }
+            }
 }
