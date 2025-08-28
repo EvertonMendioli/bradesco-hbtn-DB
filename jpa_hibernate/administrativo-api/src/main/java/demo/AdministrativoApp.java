@@ -60,7 +60,7 @@ public class AdministrativoApp {
         pes.setEmail("teste@teste.com.br");
         pes.setIdade(38);
 
-        // 1) Criando um produto
+        // 1) Criando um Pessoa
         pessoaModel.create(pes);
 
         Pessoa pes1 = new Pessoa();
@@ -70,12 +70,12 @@ public class AdministrativoApp {
         pes1.setEmail("teste2@teste2.com.br");
         pes1.setIdade(55);
 
-        // 1) Criando um produto
+        // 1) Criando um Pessoa
         pessoaModel.create(pes1);
 
-        //2) Buscando todos os produtos na base de dados
+        //2) Buscando todos as pessoas na base de dados
         List<Pessoa> pessoas = pessoaModel.findAll();
-        System.out.println("Qtde de produtos encontrados : " + pessoas.size());
+        System.out.println("Qtde de pessoas encontradas : " + pessoas.size());
         
 
         Pessoa pes2 = new Pessoa();
@@ -85,14 +85,14 @@ public class AdministrativoApp {
         pes2.setData_nascimento("25/12/1986");
         pes2.setEmail("teste2@teste2.com.br");
         pes2.setIdade(44);
-        //3) atualizando produto na base de dados
+        //3) atualizando pessoa na base de dados
         pessoaModel.update(pes2);
 
-        //4) pesquisando um produto na base de dados
+        //4) pesquisando um pessoa na base de dados
         Pessoa pessoa = pessoaModel.findById(pes);
-        System.out.println("Produto encontrado : " + pessoa.toString());
+        System.out.println("Pessoa encontrada : " + pessoa.toString());
 
-        //5) Deletando um produto na base de dados
+        //5) Deletando uma pessoa na base de dados
         //pessoaModel.delete(pes);
 
     }

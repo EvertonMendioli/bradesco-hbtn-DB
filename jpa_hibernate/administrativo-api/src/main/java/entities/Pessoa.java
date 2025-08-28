@@ -51,6 +51,11 @@ public class Pessoa {
     public void setData_nascimento(String data_nascimento) {
         this.data_nascimento = data_nascimento;
     }
+    @Override
+    public String toString() {
+        return "Pessoa [id=" + id + ", nome=" + nome + ", email=" + email + ", idade=" + idade + ", cpf=" + cpf
+                + ", data_nascimento=" + data_nascimento + "]";
+    }
 
 
     

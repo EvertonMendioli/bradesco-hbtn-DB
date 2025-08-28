@@ -89,7 +89,7 @@ public class PessoaModel {
            
         } catch (Exception e) {
             em.close();
-            System.err.println("Erro ao alterar a Pessoa !!!" + e.getMessage());
+            System.err.println("Erro ao pesquisar a Pessoa !!!" + e.getMessage());
         } finally {
             em.close();
             System.out.println("Finalizando a transação");
@@ -103,13 +103,14 @@ public class PessoaModel {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("admin-jpa");
         EntityManager em = emf.createEntityManager();
         try {
-            System.out.println("Iniciando a transação");
-            pessoas = (List<Pessoa>) em.createNativeQuery(null, Pessoa.class);
+            Query query = em.createQuery("SELECT p FROM Pessoa p");
+             pessoas =  query.getResultList();
+
             
            
         } catch (Exception e) {
             em.close();
-            System.err.println("Erro ao alterar o produto !!!" + e.getMessage());
+            System.err.println("Erro ao lista o pessoas !!!" + e.getMessage());
         } finally {
             em.close();
             System.out.println("Finalizando a transação");

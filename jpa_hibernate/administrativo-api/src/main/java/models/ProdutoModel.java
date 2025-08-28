@@ -3,10 +3,10 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.management.Query;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import entities.Pessoa;
 import entities.Produto;
@@ -90,7 +90,7 @@ public class ProdutoModel {
            
         } catch (Exception e) {
             em.close();
-            System.err.println("Erro ao alterar o produto !!!" + e.getMessage());
+            System.err.println("Erro ao pesquisar o produto !!!" + e.getMessage());
         } finally {
             em.close();
             System.out.println("Finalizando a transação");
@@ -104,10 +104,8 @@ public class ProdutoModel {
         EntityManager em = emf.createEntityManager();
         try {
 
-            javax.persistence.Query query = em.createQuery("FROM PRODUTO");
-            produtos = query.getResultList();
-            //System.out.println("Iniciando a transação");
-            //produtos = (List<Produto>) em.createNativeQuery(null, Produto.class);
+            Query query = em.createQuery("SELECT p FROM Produto p");
+             produtos =  query.getResultList();
 
             
            
