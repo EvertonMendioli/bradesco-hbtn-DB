@@ -7,24 +7,24 @@ public class MaterialCurso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
-    private String nomeMaterial;
+    private String url;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getNomeMaterial() {
-		return nomeMaterial;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setNomeMaterial(String nomeMaterial) {
-		this.nomeMaterial = nomeMaterial;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 

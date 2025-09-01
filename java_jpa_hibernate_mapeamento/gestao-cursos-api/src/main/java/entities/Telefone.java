@@ -4,40 +4,41 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Telefone {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private int ddd;
-    private long numero;
-    private String tipoTelefone;
-	public int getId() {
+    private Long id;
+    private String DDD;
+    private String numero;
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public int getDdd() {
-		return ddd;
+	public String getDDD() {
+		return DDD;
 	}
-	public void setDdd(int ddd) {
-		this.ddd = ddd;
+	public void setDDD(String dDD) {
+		DDD = dDD;
 	}
-	public long getNumero() {
+	public String getNumero() {
 		return numero;
 	}
-	public void setNumero(long numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
-	public String getTipoTelefone() {
-		return tipoTelefone;
-	}
-	public void setTipoTelefone(String tipoTelefone) {
-		this.tipoTelefone = tipoTelefone;
-	}
+
+	@ManyToOne
+    @JoinColumn(name = "aluno_id")
+	private Aluno aluno;
+
+	
 
     
 

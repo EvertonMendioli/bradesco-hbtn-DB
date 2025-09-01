@@ -15,8 +15,9 @@ public class Curso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String nomeCurso;
+    private Long id;
+    private String nome;
+	private String sigla;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "material_id", unique = true)
@@ -30,20 +31,28 @@ public class Curso {
     @JoinColumn(name = "aluno_id", unique = false)
     private Aluno aluno;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getNomeCurso() {
-		return nomeCurso;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeCurso(String nomeCurso) {
-		this.nomeCurso = nomeCurso;
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getSigla() {
+		return sigla;
+	}
+
+	public void setSigla(String sigla) {
+		this.sigla = sigla;
 	}
 
 	public MaterialCurso getMaterial() {
@@ -69,6 +78,8 @@ public class Curso {
 	public void setAluno(Aluno aluno) {
 		this.aluno = aluno;
 	}
+
+	
 
 
     

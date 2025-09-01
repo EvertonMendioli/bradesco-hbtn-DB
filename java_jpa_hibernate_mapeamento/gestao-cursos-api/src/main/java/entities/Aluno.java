@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.Date;
+
 import javax.annotation.processing.Generated;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -15,24 +17,46 @@ public class Aluno {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String nomeAluno;
+    private Long id;
+    private String nomeCompleto;
+	private String matricula;
+	private Date nascimento;
+	private String email;
 
     @OneToMany(mappedBy = "endereco", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Endereco endereco;
     @OneToMany(mappedBy = "telefone", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Telefone telefone;
-	public int getId() {
+	
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getNomeAluno() {
-		return nomeAluno;
+	public String getNomeCompleto() {
+		return nomeCompleto;
 	}
-	public void setNomeAluno(String nomeAluno) {
-		this.nomeAluno = nomeAluno;
+	public void setNomeCompleto(String nomeCompleto) {
+		this.nomeCompleto = nomeCompleto;
+	}
+	public String getMatricula() {
+		return matricula;
+	}
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+	public Date getNascimento() {
+		return nascimento;
+	}
+	public void setNascimento(Date nascimento) {
+		this.nascimento = nascimento;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public Endereco getEndereco() {
 		return endereco;
@@ -46,7 +70,9 @@ public class Aluno {
 	public void setTelefone(Telefone telefone) {
 		this.telefone = telefone;
 	}
+	
 
+	
 
     
 }
