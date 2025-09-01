@@ -1,6 +1,7 @@
 package entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.processing.Generated;
 import javax.persistence.CascadeType;
@@ -24,9 +25,14 @@ public class Aluno {
 	private String email;
 
     @OneToMany(mappedBy = "endereco", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Endereco endereco;
-    @OneToMany(mappedBy = "telefone", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Telefone telefone;
+    private List<Endereco> endereco;
+
+	@OneToMany(mappedBy = "aluno")
+    private List<Telefone> telefone;
+
+
+	
+    private List<Curso> curso;
 	
 	public Long getId() {
 		return id;
@@ -58,18 +64,26 @@ public class Aluno {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Endereco getEndereco() {
+	public List<Endereco> getEndereco() {
 		return endereco;
 	}
-	public void setEndereco(Endereco endereco) {
+	public void setEndereco(List<Endereco> endereco) {
 		this.endereco = endereco;
 	}
-	public Telefone getTelefone() {
+	public List<Telefone> getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(Telefone telefone) {
+	public void setTelefone(List<Telefone> telefone) {
 		this.telefone = telefone;
 	}
+	public List<Curso> getCurso() {
+		return curso;
+	}
+	public void setCurso(List<Curso> curso) {
+		this.curso = curso;
+	}
+	
+	
 	
 
 	

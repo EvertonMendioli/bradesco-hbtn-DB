@@ -33,7 +33,7 @@ public class AlunoModel {
     }
 
     public Aluno findById(Aluno aluno) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("admin-jpa");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("gestao-cursos-jpa");
         EntityManager em = emf.createEntityManager();
         Aluno al = new Aluno();
         try {
@@ -53,7 +53,7 @@ public class AlunoModel {
 
     public  List<Aluno> findAll() {
         List<Aluno> pessoas = new ArrayList<Aluno>();
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("admin-jpa");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("gestao-cursos-jpa");
         EntityManager em = emf.createEntityManager();
         try {
             Query query = em.createQuery("SELECT p FROM Aluno p");
@@ -74,7 +74,7 @@ public class AlunoModel {
     
 
     public void update(Aluno aluno) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("admin-jpa");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("gestao-cursos-jpa");
         EntityManager em = emf.createEntityManager();
 
         try {
@@ -87,6 +87,7 @@ public class AlunoModel {
             al.setNascimento(aluno.getNascimento());
             al.setTelefone(aluno.getTelefone());
             al.setEndereco(aluno.getEndereco());
+            al.setCurso(aluno.getCurso());
             em.getTransaction().begin();
             em.merge(al);
             em.getTransaction().commit();
@@ -101,7 +102,7 @@ public class AlunoModel {
     }
 
     public void delete(Aluno aluno) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("admin-jpa");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("gestao-cursos-jpa");
         EntityManager em = emf.createEntityManager();
 
         try {

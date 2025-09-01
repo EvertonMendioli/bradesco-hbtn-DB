@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -27,9 +30,9 @@ public class Curso {
     @JoinColumn(name = "professor_id")
     private Professor professor;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "aluno_id", unique = false)
-    private Aluno aluno;
+
+	@OneToMany(mappedBy = "curso")
+	private List<Aluno> alunos;
 
 	public Long getId() {
 		return id;
@@ -71,13 +74,15 @@ public class Curso {
 		this.professor = professor;
 	}
 
-	public Aluno getAluno() {
-		return aluno;
+	public List<Aluno> getAlunos() {
+		return alunos;
 	}
 
-	public void setAluno(Aluno aluno) {
-		this.aluno = aluno;
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
 	}
+
+
 
 	
 

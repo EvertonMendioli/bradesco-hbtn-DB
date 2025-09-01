@@ -1,7 +1,9 @@
 package demo;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import entities.Aluno;
 import entities.Curso;
@@ -19,6 +21,7 @@ public class GestaoCursosMain {
 
         Aluno a1 = new Aluno();
 
+        List<Endereco> enderecos = new ArrayList<>();
         Endereco e1 = new Endereco();
         e1.setCidade("Curitiba");
         e1.setBairro("Xaxim");
@@ -27,11 +30,19 @@ public class GestaoCursosMain {
         e1.setLogradouro("Rua");
         e1.setEstado("PR");
         e1.setNumero("123");
+        enderecos.add(e1);
+        List<Telefone> telefones = new ArrayList<>();
         Telefone t1 = new Telefone();
         t1.setDDD("41");
         t1.setNumero("999999999");
-        a1.setEndereco(e1);
-        a1.setTelefone(t1);
+        telefones.add(t1);
+        List<Curso> cursos = new ArrayList<>();
+        Curso cr = new Curso();
+        cr.setNome("Curso do Aluno");
+        cursos.add(cr);
+        a1.setCurso(cursos);
+        a1.setEndereco(enderecos);
+        a1.setTelefone(telefones);
         a1.setNomeCompleto("Nome do aluno1");
         a1.setEmail("testealuno@aluno.com.br");
         a1.setMatricula("11111111111");

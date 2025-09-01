@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,8 +22,8 @@ public class Professor {
 
 
 
-    @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Curso curso;
+	@OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Curso> curso;
 
 
 
@@ -73,15 +75,18 @@ public class Professor {
 
 
 
-	public Curso getCurso() {
+	public List<Curso> getCurso() {
 		return curso;
 	}
 
 
 
-	public void setCurso(Curso curso) {
+	public void setCurso(List<Curso> curso) {
 		this.curso = curso;
 	}
+
+
+
 	
 	
     
