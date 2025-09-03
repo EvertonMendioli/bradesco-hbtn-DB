@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 
@@ -31,8 +33,10 @@ public class Aluno {
     private List<Telefone> telefone;
 
 
-	
-    private List<Curso> curso;
+
+    @ManyToOne
+    @JoinColumn(name = "curso_id")
+    private Curso curso;
 	
 	public Long getId() {
 		return id;
@@ -76,10 +80,10 @@ public class Aluno {
 	public void setTelefone(List<Telefone> telefone) {
 		this.telefone = telefone;
 	}
-	public List<Curso> getCurso() {
+	public Curso getCurso() {
 		return curso;
 	}
-	public void setCurso(List<Curso> curso) {
+	public void setCurso(Curso curso) {
 		this.curso = curso;
 	}
 	

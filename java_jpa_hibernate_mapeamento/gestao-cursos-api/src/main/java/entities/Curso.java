@@ -26,12 +26,11 @@ public class Curso {
     @JoinColumn(name = "material_id", unique = true)
     private MaterialCurso material;
 
-    @ManyToOne(fetch = FetchType.LAZY) 
+    @ManyToOne
     @JoinColumn(name = "professor_id")
-    private Professor professor;
+	private Professor professor;
 
-
-	@OneToMany(mappedBy = "curso")
+	@OneToMany(mappedBy = "curso", cascade = CascadeType.ALL)
 	private List<Aluno> alunos;
 
 	public Long getId() {

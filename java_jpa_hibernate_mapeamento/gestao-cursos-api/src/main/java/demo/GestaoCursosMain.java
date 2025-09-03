@@ -36,11 +36,9 @@ public class GestaoCursosMain {
         t1.setDDD("41");
         t1.setNumero("999999999");
         telefones.add(t1);
-        List<Curso> cursos = new ArrayList<>();
         Curso cr = new Curso();
         cr.setNome("Curso do Aluno");
-        cursos.add(cr);
-        a1.setCurso(cursos);
+        a1.setCurso(cr);
         a1.setEndereco(enderecos);
         a1.setTelefone(telefones);
         a1.setNomeCompleto("Nome do aluno1");

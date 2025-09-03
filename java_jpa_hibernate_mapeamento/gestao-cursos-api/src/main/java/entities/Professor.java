@@ -20,9 +20,7 @@ public class Professor {
 	private String matricula;
 	private String email;
 
-
-
-	@OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "professor")
     private List<Curso> curso;
 
 
