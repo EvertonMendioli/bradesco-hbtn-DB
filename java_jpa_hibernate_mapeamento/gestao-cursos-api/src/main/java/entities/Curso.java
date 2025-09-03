@@ -22,15 +22,15 @@ public class Curso {
     private String nome;
 	private String sigla;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "material_id", unique = true)
     private MaterialCurso material;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "professor_id")
 	private Professor professor;
 
-	@OneToMany(mappedBy = "curso", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "curso", cascade = CascadeType.PERSIST)
 	private List<Aluno> alunos;
 
 	public Long getId() {

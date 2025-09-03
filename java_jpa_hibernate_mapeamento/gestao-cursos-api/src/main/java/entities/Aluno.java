@@ -26,15 +26,15 @@ public class Aluno {
 	private Date nascimento;
 	private String email;
 
-    @OneToMany(mappedBy = "endereco", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "endereco", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<Endereco> endereco;
 
-	@OneToMany(mappedBy = "aluno")
+	@OneToMany(mappedBy = "aluno", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<Telefone> telefone;
 
 
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "curso_id")
     private Curso curso;
 	
