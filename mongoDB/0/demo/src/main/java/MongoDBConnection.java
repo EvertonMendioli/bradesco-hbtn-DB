@@ -7,9 +7,9 @@ import com.mongodb.client.MongoDatabase;
 public class MongoDBConnection {
 
     // Variáveis de configuração
-    private static final String USERNAME = "aluno";
-    private static final String PASSWORD = "BN10UNhMxMDZUgEh";
-    private static final String CLUSTER_URL = "cluster0.brbyr.mongodb.net"; // Substitua pelo seu cluster se for
+    private static final String USERNAME = "evertonbaixista_db_user";
+    private static final String PASSWORD = "RYituRUU3gQjqL5m";
+    private static final String CLUSTER_URL = "cluster0.sivjeg5.mongodb.net"; // Substitua pelo seu cluster se for
                                                                             // diferente
     private static final String DATABASE_NAME = "Cluster0"; // Substitua pelo nome do seu banco de dados
 
