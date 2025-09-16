@@ -1,8 +1,11 @@
 
+import org.bson.Document;
+
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 public class MongoDBConnection {
 
@@ -59,11 +62,23 @@ public class MongoDBConnection {
         // Exemplo de uso
         if (connection.getDatabase() != null) {
             System.out.println("Banco de dados: " + connection.getDatabase().getName());
+
+
+            UsuarioOperations.incluir(connection);
+            UsuarioOperations.consultar(connection);
+            UsuarioOperations.alterar(connection);
+            UsuarioOperations.consultar(connection);
+            UsuarioOperations.excluir(connection);
+            UsuarioOperations.consultar(connection);
+            
+
+
+
         }
 
         try {
             // Aguarde para garantir que os processos internos sejam concluídos
-            Thread.sleep(5000);
+            Thread.sleep(30000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
